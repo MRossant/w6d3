@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         # debugger
         if @user.update(user_params)
             # debugger
-            redirect_to user_url(@user) #user_url doesnt work?
+            redirect_to user_url(@user)
         else
             render json: @user.errors.full_messages, status: :unprocessable_entity 
         end

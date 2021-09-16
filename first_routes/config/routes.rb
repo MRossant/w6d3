@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   # get 'users/new', to: 'users#new', as: 'new_user'
 
   resources :users, only: [:index, :show, :create, :destroy, :update]
-  resources :artworks, only: [:index, :show, :create, :destroy, :update]
+  resources :artworks, only: [:show, :create, :destroy, :update]
   resources :artwork_shares, only: [:create, :destroy]
+
+  resources :users do
+    resources :artworks, only: :index
+  end
 end

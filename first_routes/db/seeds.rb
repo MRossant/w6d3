@@ -31,6 +31,7 @@ the_great_escapade_copy = Artwork.create!(title: "the_great_escapade", image_url
 hunter_vs_pray = Artwork.create!(title: "hunter_vs_pray", image_url: "hunter_vs_pray.com", artist_id: zebra.id)
 the_fall = Artwork.create!(title: "the_fall", image_url: "the_fall.com", artist_id: gordon_gecko.id)
 the_great_deluge = Artwork.create!(title: "the_great_deluge", image_url: "the_great_deluge.com", artist_id: dolphin.id)
+yarnball = Artwork.create!(title: "huge_yarnball", image_url: "huge_yarnball.com", artist_id: cat.id)
 
 ArtworkShare.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('artwork_shares')
@@ -55,7 +56,4 @@ ArtworkShare.create!(artwork_id: hunter_vs_pray.id, viewer_id: flamingo.id)
 
 #Ape
 ArtworkShare.create!(artwork_id: the_fall.id, viewer_id: ape.id)
-
-#Hippo
-ArtworkShare.create!(artwork_id: the_great_escapade.id, viewer_id: hippo.id)
 

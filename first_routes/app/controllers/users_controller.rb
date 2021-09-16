@@ -22,9 +22,7 @@ class UsersController < ApplicationController
 
     def update 
         @user = User.find(params[:id])
-        # debugger
         if @user.update(user_params)
-            # debugger
             redirect_to user_url(@user)
         else
             render json: @user.errors.full_messages, status: :unprocessable_entity 
@@ -34,13 +32,13 @@ class UsersController < ApplicationController
     def destroy
         @user = User.find(params[:id])
         @user.destroy
-        redirect_to users_url
+        render json: @user
     end
 
 
     private
 
     def user_params
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:username)
     end
 end

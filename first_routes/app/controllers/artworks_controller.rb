@@ -1,6 +1,10 @@
+require 'byebug'
+
 class ArtworksController < ApplicationController
     def index
-        @artworks = Artwork.all
+        user_id = params[:user][:id]
+        @artworks = Artwork.left_outer_joins(:shares).where("(:user_id = artworks.artist_id) or (:user_id = artwork_shares.viewer_id)", user_id: user_id).distinct
+        # @artworks = Artwork.select("artwork.*, user.*").joins(:artist).joins(:shared_viewers).where("#{user_id} = artist_id or #{user_id} = viewer_id")
         render json: @artworks
     end
 
